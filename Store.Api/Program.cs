@@ -13,6 +13,7 @@ using Store.Data.Service;
 // Es la que crea la variable 'logger' que el catch usará después.
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 
+//esto es una prueba de git
 
 
 
