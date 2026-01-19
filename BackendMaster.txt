@@ -1,0 +1,95 @@
+POSTGRESQL 
+Puerto 5432
+usuario admin
+password password123
+
+REDIS
+entrar en el contenedor:
+docker exec -it backend_course_redis redis-cli
+
+"RedisConnection": "localhost:6379"
+IDE Redis Insight
+
+DOKER
+--Levantar imágenes (En el directorio donde este el yaml)
+		docker compose up -d
+
+POSTGRESQL 
+    "PostgresConnection": "Host=localhost;Port=5432;Database=MyStoreDb;Username=admin;Password=password123",
+			
+		
+KIBANA
+http://localhost:5601		
+
+Teoría: Elasticsearch guarda los datos en Índices (que son como tablas de una base de datos pero optimizadas para texto). NLog crea un índice nuevo cada día (ej: store-logs-2026-01-13). Si Kibana tuviera que apuntar a cada tabla individualmente, sería una locura. Una Data View es un patrón que agrupa muchos índices bajo un solo nombre para que Kibana pueda consultarlos todos a la vez.
+
+ENTITY FRAMEWORK: 
+en la consola de .net
+
+Add-Migration InitialCreate -Project Store.Data -StartupProject Store.Api -OutputDir Migrations
+ 
+**Add-Migration** [Nombre]: Es una instrucción exclusiva para tu Proyecto .NET.
+
+No toca Docker. No toca Postgres.
+
+Lo que hace es leer tus clases C# y generar un archivo de historial (un archivo .cs nuevo en tu carpeta Migrations).
+
+El nombre: Le pones el que quieras (como un mensaje de commit en Git). Se suele usar algo descriptivo como AddCategoryTable para que, si dentro de seis meses tienes 20 migraciones, sepas qué hizo cada una.
+
+**Update-Database**: en la consola de .net
+
+Update-Database -Project Store.Data -StartupProject Store.Api
+
+Es la instrucción que ejecuta el cambio real.
+
+Aquí .NET actúa como un "cliente" (como si fuera el DBeaver o el Management Studio).
+
+Se conecta a Docker a través del puerto 5432, entra en PostgreSQL y ejecuta los CREATE TABLE o ALTER TABLE necesarios para que la base de datos coincida con tus clases de C#.
+
+
+PATRONES
+
+El Patrón Unit of Work: Centralizar el DbContext y asegurar que todas las operaciones (de múltiples repositorios) se confirmen en una única transacción atómica.
+
+El Patrón Repository: Encapsular toda la lógica de consultas (LINQ, Include, filtros).
+
+{
+    "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+    "title": "Not Found",
+    "status": 404,
+    "traceId": "00-837a6de54d20f3d83eebd2bb069b31a9-45db79335ba98653-00"
+}
+
+{
+    "type": "https://tools.ietf.org/html/rfc9110#section-15.5.5",
+    "title": "Not Found",
+    "status": 404,
+    "traceId": "00-294f4826cdc9205552ccb8be25d20b64-ad7a9c17900fd06b-00"
+}
+
+{
+    "type": "https://httpstatuses.io/404",
+    "title": "Recurso no encontrado",
+    "status": 404,
+    "detail": "The given key was not present in the dictionary.",
+    "instance": "/Categories/99"
+}
+
+con docker y WSL
+RabbitMQ
+Redis
+EntityFramework Code first
+Elastic kibana
+
+
+SNAPSHOT PARA MAÑANA:
+
+Proyecto: Web API .NET con arquitectura de repositorios/Unit of Work.
+
+Estado: Redis configurado en Program.cs e instalado en Store.Api.
+
+Infraestructura: Docker con Postgres, Redis (redis_cache), RabbitMQ y ELK (Elastic/Kibana).
+
+Conexión: Probada con éxito (veo Store_ultimo_acceso en Redis Insight).
+
+Próximo paso: Implementar el patrón Cache-Aside en GetProducts del ProductsController usando IDistributedCache. También pendiente profundizar en Dashboards de Kibana para logs de errores masivos.
