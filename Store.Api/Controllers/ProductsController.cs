@@ -126,6 +126,8 @@ namespace Store.Api.Controllers
             // 4. Verificamos que la inserción fue exitosa antes de tocar la caché
             if (result > 0)
             {
+                _logger.LogInformation($"Producto con id: {result} y nombre  {product.Name}");
+
                 // INVALIDACIÓN: Al haber un nuevo producto, la lista anterior en caché ya no es válida.
                 // Borramos la llave para asegurar que el próximo GET traiga la lista actualizada.
                 await _unitOfWork.Cache.RemoveAsync("products_list");
