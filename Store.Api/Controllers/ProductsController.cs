@@ -74,6 +74,7 @@ namespace Store.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductResponseDto>> GetProduct(int id)
         {
+
             // Creamos la llave dinámica usando el ID del producto
             string cacheKey = $"product:{id}";
             _logger.LogInformation($"Buscando producto {id}...");
@@ -126,7 +127,9 @@ namespace Store.Api.Controllers
             // 4. Verificamos que la inserción fue exitosa antes de tocar la caché
             if (result > 0)
             {
-                _logger.LogInformation($"Producto con id: {result} y nombre  {product.Name}");
+                _logger.LogInformation($"Producto con id: {product.Id} y nombre  {product.Name} dado de alta");
+
+                _logger.LogInformation("Producto con id: {ProductId} y nombre  {ProductName} dado de alta" , product.Id, product.Name);
 
                 // INVALIDACIÓN: Al haber un nuevo producto, la lista anterior en caché ya no es válida.
                 // Borramos la llave para asegurar que el próximo GET traiga la lista actualizada.

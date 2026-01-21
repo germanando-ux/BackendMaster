@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Store.Data.Data;
 using Store.Domain.Models;
+using MassTransit; 
+using Store.Domain.Contracts;
 
 namespace Store.Api.Controllers
 {
@@ -10,10 +12,12 @@ namespace Store.Api.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly StoreDbContext _context;
+        private readonly IPublishEndpoint _publishEndpoint; //  RabbitMQ
 
-        public CategoriesController(StoreDbContext context)
+        public CategoriesController(StoreDbContext context, IPublishEndpoint publishEndpoint)
         {
             _context = context;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpGet]
@@ -27,8 +31,17 @@ namespace Store.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
+            // 1. Persistencia en Base de Datos (Síncrono)
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
+
+            // 2. Notificación al Bus de Mensajes (Asíncrono)
+            // Publicamos el evento para que cualquier servicio interesado se entere
+            await _publishEndpoint.Publish(new CategoryCreated
+            {
+                Id = category.Id,
+                Name = category.Name
+            });
 
             return CreatedAtAction(nameof(GetCategories), new { id = category.Id }, category);
         }

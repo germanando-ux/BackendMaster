@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../Store.Domain/Store.Domain.csproj" />
+  <Project Path="Store.Worker/Store.Worker.csproj" />
+</Solution>

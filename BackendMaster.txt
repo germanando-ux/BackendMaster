@@ -4,6 +4,8 @@ usuario admin
 password password123
 
 REDIS
+nuget Microsoft.Extensions.Caching.StackExchangeRedis
+
 entrar en el contenedor:
 docker exec -it backend_course_redis redis-cli
 
@@ -16,12 +18,23 @@ DOKER
 
 POSTGRESQL 
     "PostgresConnection": "Host=localhost;Port=5432;Database=MyStoreDb;Username=admin;Password=password123",
+	
+RABBITMQ 
+
+nuget: MassTransit.RabbitMQ
+
+http://localhost:15672
+
+Usa el usuario guest y contraseña guest.	
 			
 		
 KIBANA
+nuget Elastic.NLog.Targets
+
 http://localhost:5601		
 
 Teoría: Elasticsearch guarda los datos en Índices (que son como tablas de una base de datos pero optimizadas para texto). NLog crea un índice nuevo cada día (ej: store-logs-2026-01-13). Si Kibana tuviera que apuntar a cada tabla individualmente, sería una locura. Una Data View es un patrón que agrupa muchos índices bajo un solo nombre para que Kibana pueda consultarlos todos a la vez.
+
 
 ENTITY FRAMEWORK: 
 en la consola de .net
@@ -80,16 +93,43 @@ RabbitMQ
 Redis
 EntityFramework Code first
 Elastic kibana
+POSTGRESQL
 
+Automapper, DDD
 
 SNAPSHOT PARA MAÑANA:
+tree /f
 
-Proyecto: Web API .NET con arquitectura de repositorios/Unit of Work.
+Estado Actual del Sistema
+Contratos (Store.Domain): Definidos como record para garantizar inmutabilidad y comparación por valor.
 
-Estado: Redis configurado en Program.cs e instalado en Store.Api.
+Productor (Store.Api): Inyecta IPublishEndpoint para anunciar eventos (CategoryCreated) sin bloquear la respuesta al usuario.
 
-Infraestructura: Docker con Postgres, Redis (redis_cache), RabbitMQ y ELK (Elastic/Kibana).
+Broker (RabbitMQ): Gestiona los Exchanges y los Bindings automáticamente gracias a MassTransit.
 
-Conexión: Probada con éxito (veo Store_ultimo_acceso en Redis Insight).
+Consumidor (Store.Worker): Proyecto independiente (Worker Service) con CategoryCreatedConsumer, configurado con NLog para enviar trazas a Elasticsearch con la etiqueta app_name: Store.Worker.
 
-Próximo paso: Implementar el patrón Cache-Aside en GetProducts del ProductsController usando IDistributedCache. También pendiente profundizar en Dashboards de Kibana para logs de errores masivos.
+🛠️ Guía para continuar (Paso a Paso)
+Cuando estés listo para retomar, podemos seguir este orden. Dime en qué paso quieres empezar y lo desglosaremos con sus comentarios XML y mejores prácticas:
+
+Paso 1: Gestión de Resiliencia (Fault Tolerance)
+Qué haremos: Configurar la política de reintentos (Retry Policy).
+
+Instrucción: Forzaremos una Exception en el Worker para ver cómo MassTransit crea la cola _error y cómo podemos configurar reintentos exponenciales (esperar 5s, luego 10s, luego 30s).
+
+Paso 2: El Patrón "Outbox" (Consistencia de Datos)
+Qué haremos: Asegurar que si la base de datos guarda la categoría pero RabbitMQ está caído, el mensaje no se pierda.
+
+Instrucción: Implementaremos el Transactional Outbox para que el mensaje se guarde temporalmente en SQL Server y se envíe solo cuando el bus esté disponible.
+
+Paso 3: Documentación XML y Refactorización a Records
+Qué haremos: Limpiar todos los DTOs de la API convirtiéndolos a record y añadir documentación técnica profesional.
+
+Instrucción: Usaremos comentarios /// <summary> para que Scalar/Swagger muestren una documentación de primer nivel.
+
+Paso 4: Dockerización del Ecosistema
+Qué haremos: Actualizar el docker-compose.yml.
+
+Instrucción: Configuraremos las redes de Docker para que la API y el Worker se vean entre sí y con el contenedor de RabbitMQ usando nombres de servicio en lugar de localhost.
+
+Tip de Pro: Recuerda siempre que el Worker debe tener el proyecto de Dominio referenciado para conocer el contrato del mensaje. ¡Es tu "diccionario" compartido!

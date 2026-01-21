@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
@@ -61,6 +62,26 @@ try
     // Registramos la Unidad de Trabajo con un ciclo de vida 'Scoped'.
     // Esto significa que se crea una instancia por cada petición HTTP y se destruye al finalizar.
     builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+    // --- CONFIGURACIÓN DE MENSAJERÍA ASÍNCRONA (RabbitMQ) ---
+
+   
+    // Configuración de MassTransit para gestionar la comunicación con RabbitMQ.
+    // MassTransit actúa como un "Bus de Servicio" que simplifica el envío de mensajes.   
+    builder.Services.AddMassTransit(x =>
+    {
+        // Le indicamos a MassTransit que el transporte será RabbitMQ
+        x.UsingRabbitMq((context, cfg) =>
+        {
+            // Configuramos el Host (la dirección donde vive el servidor de RabbitMQ)
+            // Como tu API corre fuera de Docker ahora mismo, usamos "localhost"
+            cfg.Host("localhost", "/", h =>
+            {
+                h.Username("guest");
+                h.Password("guest");
+            });
+        });
+    });
 
 
     var app = builder.Build();
