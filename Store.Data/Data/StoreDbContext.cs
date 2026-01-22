@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Store.Domain.Models;
+using MassTransit;
 
 namespace Store.Data.Data
 {
@@ -36,6 +37,13 @@ namespace Store.Data.Data
                       .HasForeignKey(p => p.CategoryId)
                       .OnDelete(DeleteBehavior.Restrict); // Evitamos borrados accidentales en cascada
             });
+
+            base.OnModelCreating(modelBuilder);
+
+            // Esto añade las tablas necesarias para el patrón Outbox
+            modelBuilder.AddInboxStateEntity();
+            modelBuilder.AddOutboxMessageEntity();
+            modelBuilder.AddOutboxStateEntity();
         }
     }
 }

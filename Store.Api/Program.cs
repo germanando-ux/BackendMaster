@@ -65,21 +65,27 @@ try
 
     // --- CONFIGURACIÓN DE MENSAJERÍA ASÍNCRONA (RabbitMQ) ---
 
-   
+
     // Configuración de MassTransit para gestionar la comunicación con RabbitMQ.
     // MassTransit actúa como un "Bus de Servicio" que simplifica el envío de mensajes.   
     builder.Services.AddMassTransit(x =>
     {
-        // Le indicamos a MassTransit que el transporte será RabbitMQ
+        // Usar el contexto de la base de datos para el Outbox
+        x.AddEntityFrameworkOutbox<StoreDbContext>(o =>
+        {
+            o.UsePostgres();
+            o.UseBusOutbox();
+        });
+
         x.UsingRabbitMq((context, cfg) =>
         {
-            // Configuramos el Host (la dirección donde vive el servidor de RabbitMQ)
-            // Como tu API corre fuera de Docker ahora mismo, usamos "localhost"
             cfg.Host("localhost", "/", h =>
             {
                 h.Username("guest");
                 h.Password("guest");
             });
+
+            cfg.ConfigureEndpoints(context);
         });
     });
 
