@@ -70,13 +70,14 @@ try
     // MassTransit actúa como un "Bus de Servicio" que simplifica el envío de mensajes.   
     builder.Services.AddMassTransit(x =>
     {
-        // Usar el contexto de la base de datos para el Outbox
+        // 1. Configurar el Outbox
         x.AddEntityFrameworkOutbox<StoreDbContext>(o =>
         {
             o.UsePostgres();
-            o.UseBusOutbox();
+            o.UseBusOutbox(); // Habilita el envío automático desde la tabla
         });
 
+        // 2. Configurar RabbitMQ
         x.UsingRabbitMq((context, cfg) =>
         {
             cfg.Host("localhost", "/", h =>
@@ -85,6 +86,8 @@ try
                 h.Password("guest");
             });
 
+            // ESTA LÍNEA ES EL "PEGAMENTO": 
+            // Conecta el bus con el Outbox registrado arriba
             cfg.ConfigureEndpoints(context);
         });
     });

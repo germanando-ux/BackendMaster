@@ -40,11 +40,6 @@ namespace Store.Api.Controllers
 
             try
             {
-
-                // 1. Persistencia en Base de Datos (Síncrono)
-                _context.Categories.Add(category);
-                await _context.SaveChangesAsync();
-
                 // 2. Notificación al Bus de Mensajes (Asíncrono)
                 // Publicamos el evento para que cualquier servicio interesado se entere
                 await _publishEndpoint.Publish(new CategoryCreated
@@ -52,6 +47,12 @@ namespace Store.Api.Controllers
                     Id = category.Id,
                     Name = category.Name
                 });
+
+                // 1. Persistencia en Base de Datos (Síncrono)
+                _context.Categories.Add(category);
+                await _context.SaveChangesAsync();
+
+             
 
                 // 4. Confirmamos la transacción (Se guarda categoría y mensaje a la vez)
                 await transaction.CommitAsync();
