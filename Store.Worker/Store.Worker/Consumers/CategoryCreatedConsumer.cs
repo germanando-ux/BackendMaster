@@ -31,6 +31,16 @@ namespace Store.Worker.Consumers
             _logger.LogInformation("Confirmación recibida: Se ha creado la categoría {Name} con ID {Id}",
                 message.Name, message.Id);
 
+            // --- SIMULACIÓN DE ERROR ---
+            // Imagina que aquí llamas a una DB o API externa y falla.
+            if (message.Name.Contains("Error", StringComparison.OrdinalIgnoreCase))
+            {
+                _logger.LogError("¡Error simulado procesando {Name}!", message.Name);
+                throw new Exception("Simulación de caída de servicio externo.");
+            }
+
+            _logger.LogInformation("Éxito: Categoría {Name} procesada correctamente.", message.Name);
+
             // Simulamos un trabajo que tarda un poco
             await Task.Delay(500);
         }

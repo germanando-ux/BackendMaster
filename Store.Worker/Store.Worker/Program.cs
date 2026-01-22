@@ -38,8 +38,16 @@ namespace Store.Worker
 
                         // 2. Configuración automática de la cola
                         // Esto creará una cola en RabbitMQ vinculada a nuestro consumidor
+                        // Configuración del endpoint
                         cfg.ReceiveEndpoint("category-created-queue", e =>
                         {
+                            // POLÍTICA DE REINTENTOS:
+                            // Si falla, espera 5s, luego 10s, luego 30s. Total: 3 intentos extra.
+                            e.UseMessageRetry(r => r.Intervals(
+                                TimeSpan.FromSeconds(5),
+                                TimeSpan.FromSeconds(10),
+                                TimeSpan.FromSeconds(30)));
+
                             e.ConfigureConsumer<CategoryCreatedConsumer>(context);
                         });
                     });
