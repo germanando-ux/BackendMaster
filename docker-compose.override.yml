@@ -5,19 +5,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
-      # Host corregido: usamos 'postgres_db' para que Docker resuelva la IP correcta
       - ConnectionStrings__DefaultConnection=Host=postgres_db;Port=5432;Database=MyStoreDb;Username=admin;Password=password123
-      # Host corregido: usamos 'rabbitmq_bus' para MassTransit
       - MassTransit__Host=rabbitmq_bus
     ports:
       - "8080:8080"
     networks:
       - store-network
 
-  # El Worker también debe estar en la misma red para ver a RabbitMQ
   store.worker:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_ENVIRONMENT=Development
       - MassTransit__Host=rabbitmq_bus
     networks:
       - store-network

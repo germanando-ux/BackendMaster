@@ -1,0 +1,279 @@
+2026-01-27 09:06:30.7714 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 09:06:30.8099 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 09:06:31.1499 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 09:06:31.2098 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 09:06:31.2193 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 09:06:31.2377 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 09:06:31.6475 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 09:11:52.5032 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 09:11:52.5245 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 09:11:52.6723 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 09:11:52.7022 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 09:11:52.7063 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 09:11:52.7131 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 09:11:52.8602 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 10:05:56.4286 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 10:05:56.4504 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 10:05:56.5996 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 10:05:56.6309 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 10:05:56.6351 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 10:05:56.6431 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 10:05:56.8164 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:10:36.2150 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:10:36.2391 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:10:36.3912 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:10:36.4354 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:10:36.4435 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:10:36.4552 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:10:36.6504 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:20:14.3976 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:20:14.4257 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:20:14.5987 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:20:14.6393 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:20:14.6457 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:20:14.6533 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:20:14.8690 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:32:48.4997 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:32:48.5241 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:32:48.7448 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:32:48.7856 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:32:48.7909 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:32:48.8022 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:32:49.0611 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:33:12.9504 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:33:12.9802 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:33:13.3330 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:33:13.3973 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:33:13.4046 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:33:13.4189 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:33:13.6908 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:36:35.4380 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:36:35.4596 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:36:35.6184 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:36:35.6501 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:36:35.6574 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:36:35.6677 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:36:35.8239 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:37:14.8172 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:37:14.8453 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:37:15.0591 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:37:15.1133 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:37:15.1213 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:37:15.1341 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:37:15.3918 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:37:44.7693 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:37:44.7960 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:37:44.9855 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:37:45.0289 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:37:45.0359 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:37:45.0469 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:37:45.3127 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:38:43.6072 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:38:43.6328 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:38:43.8173 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:38:43.8574 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:38:43.8635 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:38:43.8739 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:38:44.0848 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:39:02.7147 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:39:02.7386 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:39:02.9179 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:39:02.9574 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:39:02.9632 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:39:02.9739 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:39:03.1956 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:39:18.5498 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:39:18.5663 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:39:18.7142 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:39:18.7444 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:39:18.7492 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:39:18.7572 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:39:18.9168 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:53:30.2615 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:53:30.2817 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:53:30.4830 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:53:30.5258 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:53:30.5304 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:53:30.5391 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:53:30.7268 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 11:58:28.0733 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 11:58:28.0918 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 11:58:28.2313 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 11:58:28.2601 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 11:58:28.2648 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 11:58:28.2724 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 11:58:28.4217 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:00:29.9137 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:00:29.9311 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:00:30.0658 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:00:30.0991 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:00:30.1043 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:00:30.1145 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:00:30.2717 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:01:03.2163 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:01:03.2359 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:01:03.3814 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:01:03.4132 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:01:03.4191 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:01:03.4285 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:01:03.5956 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:03:34.7377 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:03:34.7626 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:03:34.9355 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:03:34.9695 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:03:34.9746 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:03:34.9841 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:03:35.1711 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:04:54.0261 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:04:54.0478 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:04:54.1891 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:04:54.2248 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:04:54.2310 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:04:54.2413 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:04:54.4079 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:05:13.7051 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:05:13.7297 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:05:13.9040 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:05:13.9466 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:05:13.9521 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:05:13.9622 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:05:14.1688 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:09:17.0197 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:09:17.0388 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:09:17.1776 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:09:17.2081 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:09:17.2133 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:09:17.2222 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:09:17.3832 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:09:35.4565 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:09:35.4757 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:09:35.6303 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:09:35.6647 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:09:35.6697 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:09:35.6776 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:09:35.8413 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:17:21.4025 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:17:21.4277 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:17:21.6914 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:17:21.7527 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:17:21.7599 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:17:21.7744 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:17:22.0737 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:18:10.3383 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:18:10.3606 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:18:10.5316 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:18:10.5675 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:18:10.5727 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:18:10.5821 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:18:10.7506 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:25:18.3365 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:25:18.3550 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:25:18.5031 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:25:18.5332 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:25:18.5390 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:25:18.5479 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:25:18.7186 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:26:11.5306 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:26:11.5501 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:26:11.6817 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:26:11.7103 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:26:11.7154 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:26:11.7242 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:26:11.9111 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:30:19.8091 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:30:19.8281 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:30:20.0428 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:30:20.0846 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:30:20.0908 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:30:20.0991 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:30:20.2784 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:47:17.0301 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:47:17.0539 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:47:17.2013 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:47:17.2333 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:47:17.2380 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:47:17.2451 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:47:17.3995 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:53:48.6687 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:53:48.6946 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:53:48.8866 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:53:48.9279 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:53:48.9342 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:53:48.9446 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:53:49.1454 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 12:54:44.6514 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 12:54:44.6857 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 12:54:44.9521 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 12:54:45.0052 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 12:54:45.0133 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 12:54:45.0249 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 12:54:45.3415 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config
+2026-01-27 13:02:51.8723 Info Loading assembly name: Elastic.NLog.Targets
+2026-01-27 13:02:51.9109 Info Elastic.NLog.Targets, Version=9.0.0.0, Culture=neutral, PublicKeyToken=069ca2728db333c1. File version: 9.0.0.0. Product version: 9.0.0+608d9254e808806db6cd119e9af00ab7ae9402c2. GlobalAssemblyCache: False
+2026-01-27 13:02:52.2658 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Failed to create Layout with unknown type-alias: 'ElasticCommonSchemaLayout' - Verify type-alias and check extension is included.
+   at NLog.Config.FactoryExtensions.CreateInstance[TBaseType](IFactory`1 factory, String typeAlias)
+   at NLog.Config.LoggingConfigurationParser.FactoryCreateInstance[T](String typeName, IFactory`1 factory)
+2026-01-27 13:02:52.3244 Info Registered target NLog.Targets.ElasticsearchTarget(Name=elastic)
+2026-01-27 13:02:52.3333 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2026-01-27 13:02:52.3468 Info NLog, Version=6.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 6.0.6.4706. Product version: 6.0.6+1913a823347d47c0b004ce714af74436261daf20. GlobalAssemblyCache: False
+2026-01-27 13:02:52.7001 Info Configuration initialized: TargetNames=elastic, logconsole, ConfigItems=66, AutoReload=true, FilePath=/app/bin/Debug/net10.0/nlog.config

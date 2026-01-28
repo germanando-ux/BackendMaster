@@ -1,5 +1,11 @@
 {
   "profiles": {
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://localhost:{ServicePort}/scalar/v1",
+      "publishAllPorts": true
+    },
     "http": {
       "commandName": "Project",
       "environmentVariables": {

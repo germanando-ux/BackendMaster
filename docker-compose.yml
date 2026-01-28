@@ -63,15 +63,32 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - XPACK_SECURITY_ENCRYPTIONKEY="c149666f827448839076829741285324"
-      - XPACK_REPORTING_ENCRYPTIONKEY="83917462058372649103847562910384"
-      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY="92038475610293847561029384756102"
+      - XPACK_SECURITY_ENCRYPTIONKEY=c149666f827448839076829741285324
+      - XPACK_REPORTING_ENCRYPTIONKEY=83917462058372649103847562910384
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=92038475610293847561029384756102
     ports:
       - "5601:5601"
     depends_on:
       - elasticsearch
     networks:
-      - store-network      
+      - store-network     
+
+  # Servicios de la Aplicación
+  store.api:
+    image: storeapi
+    build:
+      context: .
+      dockerfile: Store.Api/Dockerfile
+    networks:
+      - store-network
+
+  store.worker:
+    image: storeworker
+    build:
+      context: .
+      dockerfile: Store.Worker/Dockerfile
+    networks:
+      - store-network
 
 # DEFINICIÓN GLOBAL DE REDES Y VOLÚMENES
 networks:
@@ -79,8 +96,15 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data:      
+  postgres_data:
+    external: true
+    name: backendmaster_postgres_data
   redis_data:
+    external: true
+    name: backendmaster_redis_data
   rabbit_data:
-  elastic_data: # <--- Nombre consistente con el mapeo de arriba
-    driver: local
+    external: true
+    name: backendmaster_rabbit_data
+  elastic_data:
+    external: true
+    name: backendmaster_elastic_data

@@ -80,14 +80,15 @@ try
         // 2. Configurar RabbitMQ
         x.UsingRabbitMq((context, cfg) =>
         {
-            cfg.Host("localhost", "/", h =>
+            // Obtener el host del appsettings o usar el nombre del servicio en docker-compose
+            var rabbitHost = builder.Configuration["MassTransit:Host"] ?? "rabbitmq_bus";
+
+            cfg.Host(rabbitHost, "/", h =>
             {
                 h.Username("guest");
                 h.Password("guest");
             });
 
-            // ESTA LÍNEA ES EL "PEGAMENTO": 
-            // Conecta el bus con el Outbox registrado arriba
             cfg.ConfigureEndpoints(context);
         });
     });
@@ -109,11 +110,21 @@ try
     // al formato estandarizado de ProblemDetails antes de salir.
     app.UseStatusCodePages();
 
-    app.UseHttpsRedirection();
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseHttpsRedirection();
+    }
 
     app.UseAuthorization();
 
     app.MapControllers();
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<StoreDbContext>();
+        context.Database.Migrate();
+    }
 
     app.Run();
 }
