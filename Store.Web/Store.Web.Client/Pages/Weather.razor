@@ -1,0 +1,67 @@
+﻿@page "/weather"
+
+@inject IHttpClientFactory ClientFactory
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+@if (categories == null)
+{
+    <p><em>Cargando datos de la API en Docker...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Nº de Productos</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cat in categories)
+            {
+                <tr>
+                    <td>@cat.Id</td>
+                    <td>@cat.Name</td>
+                    <td>@cat.Products.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Category[]? categories;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // 1. Creamos el cliente que configuramos en el Program.cs
+            HttpClient client = ClientFactory.CreateClient("StoreApi");
+
+            // 2. Intentamos traer las categorías de tu API de Docker
+            // Asumo que tu endpoint es "api/categories", si no, cámbialo.
+            categories = await client.GetFromJsonAsync<Category[]>("categories");
+        }
+        catch (Exception ex)
+        {
+            // Si falla, lo veremos en la consola del navegador (F12)
+            Console.WriteLine($"Error al llamar a la API: {ex.Message}");
+        }
+    }
+
+    // Definimos el "molde" (clase) aquí mismo para no complicarnos con más archivos
+    public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        // El JSON trae "products", así que lo añadimos para que no de error al mapear
+        public List<object> Products { get; set; } = new();
+    }
+}

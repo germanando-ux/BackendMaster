@@ -14,13 +14,25 @@ using Store.Data.Service;
 // Es la que crea la variable 'logger' que el catch usará después.
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 
-//esto es una prueba de git
-
 
 
 try
 {
+
     var builder = WebApplication.CreateBuilder(args);
+
+    // --- CONFIGURACIÓN DE CORS ---
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy( "AllowBlazor", policy =>
+        {
+            //policy.WithOrigins("https://localhost:7072") // La URL de tu Front
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost") // Permite cualquier cosa que sea localhost
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+    });
+
     // --- CONFIGURACIÓN DE NLOG ---
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
@@ -95,6 +107,8 @@ try
 
 
     var app = builder.Build();
+
+    app.UseCors("AllowBlazor");
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())

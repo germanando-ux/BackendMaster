@@ -3,8 +3,9 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://localhost:{ServicePort}/scalar/v1",
-      "publishAllPorts": true
+      "launchUrl": "http://localhost:8080/scalar/v1",
+      "publishAllPorts": true,
+      "useSSL": false
     },
     "http": {
       "commandName": "Project",

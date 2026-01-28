@@ -7,8 +7,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceName>store.api</DockerServiceName>
-    <DockerServiceUrl>{Scheme}://localhost:8080/scalar/v1</DockerServiceUrl>
+    <DockerServiceName>store-api</DockerServiceName>
+    <DockerServiceUrl>http://localhost:8080/scalar/v1</DockerServiceUrl>
+    <DockerDevelopmentMode>Regular</DockerDevelopmentMode>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
