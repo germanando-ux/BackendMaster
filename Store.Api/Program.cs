@@ -26,8 +26,8 @@ try
     {
         options.AddPolicy( "AllowBlazor", policy =>
         {
-            //policy.WithOrigins("https://localhost:7072") // La URL de tu Front
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost") // Permite cualquier cosa que sea localhost
+            policy.WithOrigins("https://localhost:7072","https://store_web.dev.localhost:7072") // La URL de tu Front
+            //policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost") // Permite cualquier cosa que sea localhost
                   .AllowAnyMethod()
                   .AllowAnyHeader();
         });
@@ -107,6 +107,8 @@ try
 
 
     var app = builder.Build();
+
+    app.UseRouting(); 
 
     app.UseCors("AllowBlazor");
 
