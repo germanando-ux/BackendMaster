@@ -82,7 +82,7 @@ namespace Store.Api.Controllers
             // 1. Intentar recuperar de la caché (Unit of Work -> CacheService)
             var cachedProduct = await _unitOfWork.Cache.GetAsync<ProductResponseDto>(cacheKey);
 
-            if (cachedProduct != null)
+             if (cachedProduct != null)
             {
                 _logger.LogInformation($"--- Producto {id} recuperado desde CACHÉ ---");
                 return Ok(cachedProduct);
