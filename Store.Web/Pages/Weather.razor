@@ -1,0 +1,77 @@
+﻿@page "/weather"
+@using System.Net.Http.Json
+@inject HttpClient Http
+
+<PageTitle>Prueba de Categorías</PageTitle>
+
+<h1>Conexión con la API</h1>
+
+<p>Este componente obtiene datos de la API de Categorías.</p>
+
+@if (categorias == null)
+{
+    @* Si la API aún no ha respondido, mostramos este mensaje *@
+    <p><em>Cargando datos de la API...</em></p>
+}
+else
+{
+  <div class="container mt-4">
+      <div class="card shadow">
+          <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Gestión de Categorías</h3>
+          </div>
+        <div class="card-body">
+            <table class="table table-hover talbe-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre de la Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cat in categorias)
+                    {
+                        <tr>
+                            <td>@cat.id</td>
+                            <td>@cat.name</td>
+                            <td>
+                                <button class="btn btn-sm btn-info">Editar</button>
+                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+      </div>
+  </div>
+}
+
+@code {
+    // Definimos una clase sencilla aquí mismo para recibir los datos
+    // Debe tener las mismas propiedades que el JSON que viste antes
+    public class Category
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+
+    private Category[]? categorias;
+
+    // Este método se ejecuta automáticamente al entrar en la página
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Intentamos pedir las categorías a la URL de la API
+            // Como en Program.cs ya pusimos "https://localhost:7260/",
+            // aquí solo pedimos el endpoint "categories"
+            categorias = await Http.GetFromJsonAsync<Category[]>("categories");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+}
