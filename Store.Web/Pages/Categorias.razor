@@ -102,35 +102,10 @@
         }
         else
         {
-                    await JS.InvokeVoidAsync("eval", @"
-            // Definimos una animación de fundido suave
-            const style = document.createElement('style');
-            style.innerHTML = `
-                .my-fade-in { animation: fadeIn 0.6s !important; }
-                .my-fade-out { animation: fadeOut 0.6s !important; }
-                @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-                @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
-            `;
-            document.head.appendChild(style);
-
-            Swal.fire({
-                toast: true,
-                position: 'center',
-                icon: 'error',
-                title: 'No se puede eliminar',
-                text: 'Existen productos asociados',
-                showConfirmButton: false,
-                timer: 1500,
-                timerProgressBar: false,
-                showClass: {
-                    popup: 'my-fade-in' // Usamos nuestra animación de opacidad
-                },
-                hideClass: {
-                    popup: 'my-fade-out' // Y para salir también
-                }
-            });
-        ");
-
-        }
+            // LLAMADA ENCAPSULADA:
+            // Usamos nuestra clase Notificaciones.
+            // Le pasamos 'JS' (que es el IJSRuntime que ya tienes inyectado en la página)
+            await Notificaciones.MostrarToast(JS, "No se puede eliminar", "Existen productos asociados a esta categoría");
+        }        
     }
 }
