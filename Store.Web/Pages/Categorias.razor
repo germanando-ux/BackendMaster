@@ -1,0 +1,136 @@
+﻿@page "/categorias"
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Gestión de Categorías</h3>
+            <button class="btn btn-light">Nueva Categoría</button>
+        </div>
+        <div class="card-body">
+            @if (categorias == null)
+            {
+                <div class="text-center">
+                    <div class="spinner-border text-primary" role="status"></div>
+                    <p>Cargando categorías...</p>
+                </div>
+            }
+            else
+            {
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cat in categorias)
+                        {
+                            <tr>
+                                <td>@cat.id</td>
+                                <td>@cat.name</td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-info me-2">Editar</button>
+                  @*                   <button class="btn btn-sm btn-danger" @onclick="()=> EliminarCategoria(cat.id)">                                    
+                                        Eliminar
+                                    </button> *@
+                                    <button class="btn btn-sm btn-danger" @onclick="() => ConfirmarEliminacion(cat.id)">
+                                        <span class="bi bi-trash" aria-hidden="true"></span> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<Category>? categorias;
+
+    public class Category
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarCategorias();
+    }
+
+    private async Task CargarCategorias()
+    {
+        try
+        {
+            // OJO: Asegúrate de que tu endpoint en la API sea "categories"
+            categorias = await Http.GetFromJsonAsync<List<Category>>("categories");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar: {ex.Message}");
+        }
+    }
+
+    private async Task ConfirmarEliminacion(int id)
+    {
+        // Esto abre la ventanita típica del navegador con "Aceptar" o "Cancelar"
+        var confirmado = await JS.InvokeAsync<bool>("confirm", $"¿Seguro que quieres eliminar la categoría con ID {id}?");
+
+        if (confirmado)
+        {
+            // Si el usuario pulsa Aceptar, entonces sí llamamos al borrado real
+            await EliminarCategoria(id);
+        }
+    }
+    private async Task EliminarCategoria(int id)
+    {
+        // 1. Lanzamos la petición DELETE a la API
+        // Asumiendo que tu API escucha en "api/categories/{id}" o "categories/{id}"
+        var response = await Http.DeleteAsync($"categories/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            // 2. Si la API responde OK (200 o 204), refrescamos la lista
+            await CargarCategorias();
+            Console.WriteLine($"Categoría {id} eliminada de la base de datos.");
+        }
+        else
+        {
+                    await JS.InvokeVoidAsync("eval", @"
+            // Definimos una animación de fundido suave
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .my-fade-in { animation: fadeIn 0.6s !important; }
+                .my-fade-out { animation: fadeOut 0.6s !important; }
+                @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+                @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+            `;
+            document.head.appendChild(style);
+
+            Swal.fire({
+                toast: true,
+                position: 'center',
+                icon: 'error',
+                title: 'No se puede eliminar',
+                text: 'Existen productos asociados',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: false,
+                showClass: {
+                    popup: 'my-fade-in' // Usamos nuestra animación de opacidad
+                },
+                hideClass: {
+                    popup: 'my-fade-out' // Y para salir también
+                }
+            });
+        ");
+
+        }
+    }
+}
