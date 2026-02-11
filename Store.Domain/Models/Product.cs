@@ -15,6 +15,7 @@ namespace Store.Domain.Models
         public decimal Price { get; set; }
         [Range(0, int.MaxValue, ErrorMessage = "El stock no puede ser negativo")]
         public int Stock { get; set; }
+        public string? Image { get; set; }
 
         // Clave ajena
         [Required]

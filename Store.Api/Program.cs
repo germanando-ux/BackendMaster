@@ -137,12 +137,13 @@ try
 
     app.MapControllers();
 
-    using (var scope = app.Services.CreateScope())
-    {
-        var services = scope.ServiceProvider;
-        var context = services.GetRequiredService<StoreDbContext>();
-        context.Database.Migrate();
-    }
+    //Lanza migraciones automáticamente
+    //using (var scope = app.Services.CreateScope())
+    //{
+    //    var services = scope.ServiceProvider;
+    //    var context = services.GetRequiredService<StoreDbContext>();
+    //    context.Database.Migrate();
+    //}
 
     app.Run();
 }
