@@ -15,3 +15,4 @@ namespace Store.Web.Models
         // Campo para la URL de la imagen (opcional)
         public string? Image { get; set; }
     }
+}

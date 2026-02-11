@@ -7,7 +7,9 @@
     <div class="card shadow">
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
             <h3 class="mb-0">Gestión de Categorías</h3>
-            <button class="btn btn-light">Nueva Categoría</button>
+            <button class="btn btn-info" @onclick="AbrirModal">
+                <i class="bi bi-plus-circle"></i> Nueva Categoría
+            </button>
         </div>
         <div class="card-body">
             @if (categorias == null)
@@ -19,6 +21,9 @@
             }
             else
             {
+              @*   <div class="mb-3 text-end">
+                  
+                </div> *@
                 <table class="table table-hover">
                     <thead class="table-dark">
                         <tr>
@@ -31,14 +36,14 @@
                         @foreach (var cat in categorias)
                         {
                             <tr>
-                                <td>@cat.id</td>
-                                <td>@cat.name</td>
+                                <td>@cat.Id</td>
+                                <td>@cat.Name</td>
                                 <td class="text-center">
-                                    <button class="btn btn-sm btn-info me-2">Editar</button>
-                  @*                   <button class="btn btn-sm btn-danger" @onclick="()=> EliminarCategoria(cat.id)">                                    
-                                        Eliminar
-                                    </button> *@
-                                    <button class="btn btn-sm btn-danger" @onclick="() => ConfirmarEliminacion(cat.id)">
+                                    @* <button class="btn btn-sm btn-info me-2">Editar</button> *@
+                                    <button class="btn btn-sm btn-info me-2" @onclick="() => EditarCategoria(cat)">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" @onclick="() => ConfirmarEliminacion(cat.Id)">
                                         <span class="bi bi-trash" aria-hidden="true"></span> Eliminar
                                     </button>
                                 </td>
@@ -53,21 +58,40 @@
 @* FORMULARIO MODAL DE EDICIÓN DE CATEGORÍAS *@
 @if (mostrarModal)
 {
-    <div class="modal fade show" style="display: block; background-color: rgba(0,0,0,0.5);" tabindex= "-1">
-        <div class="modal-dialog">
+    <div class="modal fade show" style="display: block; background-color: rgba(0,0,0,0.2); backdrop-filter: blur(2px);" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">@tituloModal</h5>
-                    <button type="button" class="btn-close" @onclick="CerrarModal"></button>
+                <EditForm Model="@categoriaActual" OnValidSubmit="GuardarCategoria">
+                    <DataAnnotationsValidator />
+
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">@tituloModal</h5>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CerrarModal"></button>
+                    </div>
 
                     <div class="modal-body">
-                        <p>Aquí pondremos el formulario en el siguiente paso</p>
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Nombre</label>
+                            <InputText @bind-Value="categoriaActual.Name" class="form-control" placeholder="Escribe el nombre..." />
+                            <ValidationMessage For="@(() => categoriaActual.Name)" class="text-danger" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">URL Imagen</label>
+                            <InputText @bind-Value="categoriaActual.Image" class="form-control" placeholder="http://..." />
+                        </div>
+
                     </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" @onclick="CerrarModal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" @onclick="CerrarModal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i> Guardar Cambios
+                        </button>
                     </div>
-                </div>
+                </EditForm>
             </div>
         </div>
     </div>
@@ -80,11 +104,6 @@
     private string tituloModal = "Nueva Categoría";
     private bool mostrarModal = false;
 
-    public class Category
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -104,7 +123,7 @@
         }
     }
 
-    private async Task ConfirmarEliminacion(int id)
+    private async Task ConfirmarEliminacion(int? id)
     {
         // Esto abre la ventanita típica del navegador con "Aceptar" o "Cancelar"
         var confirmado = await JS.InvokeAsync<bool>("confirm", $"¿Seguro que quieres eliminar la categoría con ID {id}?");
@@ -115,7 +134,7 @@
             await EliminarCategoria(id);
         }
     }
-    private async Task EliminarCategoria(int id)
+    private async Task EliminarCategoria(int? id)
     {
         // 1. Lanzamos la petición DELETE a la API
         // Asumiendo que tu API escucha en "api/categories/{id}" o "categories/{id}"
@@ -136,10 +155,15 @@
     }
 
     #region ModalEdicionCategorias
+
+
     // Método para abrir el modal (lo llamará el botón "Nueva Categoría")
     private void AbrirModal()
     {
-        categoriaActual = new Category(); // Limpiamos el objeto por si había algo de antes
+        // Limpiamos el objeto por si había algo de antes
+        // Al poner Id = 0, el JSON llevará un número y la API lo aceptará
+        categoriaActual = new Category { Id = 0, Name = "" };
+        
         tituloModal = "Nueva Categoría";
         mostrarModal = true;
     }
@@ -149,6 +173,61 @@
     {
         mostrarModal = false;
     }
-    #endregion
+
+    private void EditarCategoria(Category cat)
+    {
+        // Clonamos la categoría para no modificar la de la lista directamente
+        // hasta que el usuario le dé a "Guardar"
+        categoriaActual = new Category
+        {
+            Id = cat.Id,
+            Name = cat.Name,
+            Image = cat.Image
+        };
+
+        tituloModal = "Editar Categoría";
+        mostrarModal = true;
+    }
+
+
+    private async Task GuardarCategoria()
+    {
+        try
+        {
+            HttpResponseMessage response;
+            // Si el Id es 0 o nulo, significa que es una categoría NUEVA
+            if (categoriaActual.Id == null || categoriaActual.Id == 0)
+            {
+                // Enviamos un POST para CREAR
+                response = await Http.PostAsJsonAsync("categories", categoriaActual);
+            }
+            else
+            {
+            // Enviamos un PUT para EDITAR (usando el Id en la URL)
+            response = await Http.PutAsJsonAsync($"categories/{categoriaActual.Id}", categoriaActual);
+            }
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Si la API responde bien:
+                await Notificaciones.MostrarToast(JS, "¡Logrado!", "Categoría guardada correctamente", "success");
+            
+                mostrarModal = false;      // Cerramos el modal
+                await CargarCategorias();  // Refrescamos la lista de la tabla
+            }
+            else
+            {
+                // Si la API nos devuelve un error (por ejemplo, 400 o 500)
+                await Notificaciones.MostrarToast(JS, "Error", "No se pudo guardar en el servidor");
+            }
+        }
+        
+        catch (Exception ex)
+        {
+        // Por si falla la conexión o hay un error inesperado
+        await Notificaciones.MostrarToast(JS, "Error crítico", ex.Message);
+        }
+    }
+#endregion
 
 }
