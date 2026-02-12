@@ -1,0 +1,63 @@
+﻿@page "/products"
+@inject Store.Web.Services.ProductService ProductService
+<h3>Products</h3>
+
+@if (products == null)
+{
+    <p><em>Cargando datos del inventario...</em></p>
+}
+else
+{
+    <table class="table table-hover mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var prod in products)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(prod.Image))
+                        {
+                            <img src="@prod.Image" style="width: 50px; height: 50px; object-fit: cover;" class="rounded shadow-sm" />                            
+                        }
+                        else
+                        {
+                            <i class="bi bi-image text-muted" style="font-size: 2rem;"></i>
+                        }
+                    </td>
+                    <td>@prod.Name</td>
+                    <td>@prod.Price.ToString("C")</td>
+                    <td>@prod.Stock</td>
+                    <td>
+                        @* Aquí pondremos los botones más adelante *@
+                        <button class="btn btn-sm btn-outline-primary">Editar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    // 1. Definimos la variable donde vivirán los datos.
+    // La ponemos como null inicialmente para saber que está "cargando".
+    private List<Store.Web.Models.Product>? products;
+
+    // 2. Este es un "Trigger" del sistema (Ciclo de vida)
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulamos un pequeño retraso para ver el efecto de carga
+        await Task.Delay(500);
+
+        // Llamamos al servicio para llenar la lista
+        products = await ProductService.GetProductsAsync();
+    }
+}
