@@ -40,7 +40,7 @@ namespace Store.Data.DTO
         /// <summary>
         /// URL de la imagen del producto.
         /// </summary>
-        public string? PictureUrl { get; set; }
+        public string? Image { get; set; }
 
         /// <summary>
         /// Identificador de la categoría a la que pertenece el producto.

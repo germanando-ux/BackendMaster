@@ -11,6 +11,8 @@ namespace Store.Data.DTO
         public string Description { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public int Stock { get; set; }
+        public string? Image { get; set; }
+
         public int CategoryId { get; set; }
         public string CategoryName { get; set; } = string.Empty; // <-- Solo lo que el cliente necesita
     }

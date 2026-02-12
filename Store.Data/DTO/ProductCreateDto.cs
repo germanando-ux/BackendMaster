@@ -19,6 +19,9 @@ namespace Store.Data.DTO
         [Range(0, int.MaxValue)]
         public int Stock { get; set; }
 
+        public string? Image { get; set; }
+
+
         [Required]
         public int CategoryId { get; set; }
     }
