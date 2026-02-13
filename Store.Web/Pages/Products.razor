@@ -1,55 +1,169 @@
 ﻿@page "/products"
 @inject Store.Web.Services.ProductService ProductService
-<h3>Products</h3>
+@inject IJSRuntime JS
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Gestión de Productos</h3>
+            <button class="btn btn-info">
+                <i class="bi bi-plus-circle"></i> Nuevo Producto
+            </button>
+        </div>
+        @if (products == null)
+        {
+            <p><em>Cargando datos del inventario...</em></p>
+        }
+        else
+        {
+            <table class="table table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
 
-@if (products == null)
+                </thead>
+                <tbody>
+                    @foreach (var prod in products)
+                    {
+                        <tr>
+                            <td>
+                                @if (!string.IsNullOrEmpty(prod.Image))
+                                {
+                                    <img src="@prod.Image" style="width: 50px; height: 50px; object-fit: cover;" class="rounded shadow-sm" />                            
+                                }
+                                else
+                                {
+                                    <i class="bi bi-image text-muted" style="font-size: 2rem;"></i>
+                                }
+                            </td>
+                            <td class="align-middle">@prod.Name</td>
+                            <td class="align-middle">@prod.Price.ToString("C")</td>
+                            <td class="align-middle">@prod.Stock</td>
+                            <td class="align-middle">
+                                <button class="btn btn-sm btn-info me-2" @onclick="() => EditarProducto(prod)">
+                                    <i class="bi bi-pencil"></i> Editar
+                                </button>
+                                <button class="btn btn-sm btn-danger" @onclick="() => ConfirmarEliminacion(prod.Id)">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+ </div>
+ @* FORMULARIO MODAL EDITAR PRODUCTO *@
+@if (mostrarModal)
 {
-    <p><em>Cargando datos del inventario...</em></p>
-}
-else
-{
-    <table class="table table-hover mt-3">
-        <thead class="table-dark">
-            <tr>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-            </tr>
+    <div class="modal fade show" style="display: block; background-color: rgba(0,0,0,0.2); backdrop-filter: blur(4px);" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            @* modal-lg porque este form es más ancho *@
+            <div class="modal-content shadow-lg">
+                <EditForm Model="@productoActual" OnValidSubmit="GuardarProducto">
+                    <DataAnnotationsValidator />
 
-        </thead>
-        <tbody>
-            @foreach (var prod in products)
-            {
-                <tr>
-                    <td>
-                        @if (!string.IsNullOrEmpty(prod.Image))
-                        {
-                            <img src="@prod.Image" style="width: 50px; height: 50px; object-fit: cover;" class="rounded shadow-sm" />                            
-                        }
-                        else
-                        {
-                            <i class="bi bi-image text-muted" style="font-size: 2rem;"></i>
-                        }
-                    </td>
-                    <td>@prod.Name</td>
-                    <td>@prod.Price.ToString("C")</td>
-                    <td>@prod.Stock</td>
-                    <td>
-                        @* Aquí pondremos los botones más adelante *@
-                        <button class="btn btn-sm btn-outline-primary">Editar</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">@tituloModal</h5>
+                        <button type="button" class="btn-close btn-close-white" @onclick="CerrarModal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                @* Campo Nombre *@
+                                <div class="col-12 mb-3">
+                                    <label class="form-label fw-bold">Nombre del Producto</label>
+                                    <InputText @bind-Value="productoActual.Name" class="form-control" placeholder="Ej: Monitor LED 24''" />
+                                    <ValidationMessage For="@(() => productoActual.Name)" class="text-danger" />
+                                </div>
+
+                                @* Campo Descripción (Nuevo: usamos TextArea) *@
+                                <div class="col-12 mb-3">
+                                    <label class="form-label fw-bold">Descripción</label>
+                                    <InputTextArea @bind-Value="productoActual.Description" class="form-control" rows="3" placeholder="Detalles técnicos, garantía..." />
+                                    <ValidationMessage For="@(() => productoActual.Description)" class="text-danger" />
+                                </div>
+                                <div class="row">
+                                    @* Campo precio *@
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label fw-bold">Precio</label>
+                                        <div class="input-group">
+                                            <InputNumber @bind-Value="productoActual.Price" class="form-control" placeholder="Precio" />
+                                            <span class="input-group-text">€</span>
+                                        </div>
+                                        <ValidationMessage For="@(() => productoActual.Price)" class="text-danger" />
+                                    </div>
+                                    @* Campo stock *@
+                                    <div class="col-6 mb-3">
+                                        <label class="form-label fw-bold">Stock</label>
+                                        <InputNumber @bind-Value="productoActual.Stock" class="form-control" placeholder="Stock" />
+                                        <ValidationMessage For="@(() => productoActual.Stock)" class="text-danger" />
+                                    </div>
+                                </div>
+
+                                @* Campo url  *@
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label fw-bold">URL de la Imagen</label>
+                                    <InputText @bind-Value="productoActual.Image" class="form-control" placeholder="https://..." />
+                                    <small class="text-muted">Pega la dirección de una imagen de internet.</small>
+                                </div>
+                            </div>
+
+                            @* campo imagen *@
+                            <div class="col-md-4 d-flex flex-column align-items-center justify-content-start border-start ps-4">
+                             
+                                @* Columna para la Vista Previa *@
+                                <label class="form-label d-block fw-bold">Vista previa</label>
+                                @if (!string.IsNullOrEmpty(productoActual.Image))
+                                {
+                                    <img src="@productoActual.Image"
+                                         class="img-thumbnail shadow-sm w-100"
+                                         style="max-height: 500px; object-fit: contain;" />
+                                }
+                                else
+                                {
+                                   <div class="border rounded d-flex align-items-center justify-content-center bg-light w-100" 
+                                         style="height: 200px;">
+                                        <i class="bi bi-camera text-muted" style="font-size: 3rem;"></i>
+                                    </div>
+                                }
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="CerrarModal">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i> Guardar Producto
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
 }
 
 @code {
     // 1. Definimos la variable donde vivirán los datos.
     // La ponemos como null inicialmente para saber que está "cargando".
     private List<Store.Web.Models.Product>? products;
+    private Product productoActual = new Product();
+
+    // Control visual
+    private string tituloModal = "Nuevo Producto";
+    private bool mostrarModal = false;
+
+    // Para el desplegable de categorías (lo necesitaremos en el form)
+    private List<Category> listaCategorias = new();
 
     // 2. Este es un "Trigger" del sistema (Ciclo de vida)
     protected override async Task OnInitializedAsync()
@@ -60,4 +174,73 @@ else
         // Llamamos al servicio para llenar la lista
         products = await ProductService.GetProductsAsync();
     }
+
+    private async Task ConfirmarEliminacion(int? id)
+    {
+        // 1. Pedimos confirmación al usuario (Consistencia visual)
+        var confirmado = await JS.InvokeAsync<bool>("confirm", $"¿Seguro que quieres eliminar el producto con ID {id}?");
+
+        if (confirmado)
+        {
+            await EliminarProducto(id);
+        }
+    }
+
+    private async Task EliminarProducto(int? id)
+    {
+        // 2. Llamamos al servicio (que ya tiene el HttpClient)
+        // Nota: El servicio que creamos antes ya maneja la llamada a la API
+        try
+        {
+            await ProductService.DeleteProductAsync(id.Value);
+
+            // 3. Notificación de éxito usando tu clase de ayuda
+            await Notificaciones.MostrarToast(JS, "Eliminado", "El producto ha sido borrado", "success");
+
+            // 4. Refrescamos la lista
+            products = await ProductService.GetProductsAsync();
+        }
+        catch (Exception ex)
+        {
+            await Notificaciones.MostrarToast(JS, "Error", "No se pudo eliminar el producto");
+        }
+    }
+
+    #region modal
+    // Métodos de control
+    private void AbrirModal()
+    {
+        productoActual = new Product { Id = 0 }; // Inicializamos vacío
+        tituloModal = "Nuevo Producto";
+        mostrarModal = true;
+    }
+
+    private void EditarProducto(Product prod)
+    {
+        // Clonamos para no editar la tabla "en vivo"
+        productoActual = new Product
+        {
+            Id = prod.Id,
+            Name = prod.Name,
+            Description = prod.Description,
+            Price = prod.Price,
+            Stock = prod.Stock,
+            Image = prod.Image,
+            CategoryId = prod.CategoryId
+        };
+        tituloModal = "Editar Producto";
+        mostrarModal = true;
+    }
+
+    private void CerrarModal() => mostrarModal = false;
+    #endregion 
+    private async Task GuardarProducto()
+    {
+        // De momento, solo cerramos el modal para que te deje compilar
+        // Más adelante meteremos aquí la llamada al ProductService
+        Console.WriteLine("Intentando guardar...");
+        mostrarModal = false;
+        await Task.CompletedTask;
+    }
+}
 }
