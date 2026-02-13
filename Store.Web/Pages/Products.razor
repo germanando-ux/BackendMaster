@@ -1,5 +1,6 @@
 ﻿@page "/products"
 @inject Store.Web.Services.ProductService ProductService
+@inject Store.Web.Services.ICategoryService CategoryService // <--- Inyectamos la interfaz
 @inject IJSRuntime JS
 <div class="container mt-4">
     <div class="card shadow">
@@ -113,6 +114,17 @@
                                     <InputText @bind-Value="productoActual.Image" class="form-control" placeholder="https://..." />
                                     <small class="text-muted">Pega la dirección de una imagen de internet.</small>
                                 </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Categoría</label>
+                                     <InputSelect @bind-Value="productoActual.CategoryId" class="form-select">
+                                            <option value="">-- Seleccione Categoría --</option>
+                                            @foreach (var cat in listaCategorias)
+                                            {
+                                                    <option value="@cat.Id">@cat.Name</option>
+                                            }
+                                     </InputSelect>
+                                     <ValidationMessage For="@(() => productoActual.CategoryId)" class="text-danger" />                                        
+                                </div>
                             </div>
 
                             @* campo imagen *@
@@ -173,6 +185,7 @@
 
         // Llamamos al servicio para llenar la lista
         products = await ProductService.GetProductsAsync();
+        listaCategorias = await CategoryService.GetCategoriesAsync();
     }
 
     private async Task ConfirmarEliminacion(int? id)
