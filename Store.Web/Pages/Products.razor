@@ -6,7 +6,7 @@
     <div class="card shadow">
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
             <h3 class="mb-0">Gestión de Productos</h3>
-            <button class="btn btn-info">
+            <button class="btn btn-info" @onclick="AbrirModal">
                 <i class="bi bi-plus-circle"></i> Nuevo Producto
             </button>
         </div>
@@ -154,7 +154,7 @@
                         <button type="button" class="btn btn-secondary" @onclick="CerrarModal">
                             <i class="bi bi-x-circle"></i> Cancelar
                         </button>
-                        <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" @onclick="SaveProductAsync">
                             <i class="bi bi-save"></i> Guardar Producto
                         </button>
                     </div>
@@ -217,6 +217,29 @@
         {
             await Notificaciones.MostrarToast(JS, "Error", "No se pudo eliminar el producto");
         }
+    }
+
+    private async Task SaveProductAsync()
+    {
+        try
+        {
+            // 1. Enviamos el objeto al servicio (él decide si es POST o PUT)
+            await ProductService.SaveProductAsync(productoActual);
+
+            // 2. Notificación visual de éxito
+            await Notificaciones.MostrarToast(JS, "Guardado", "Producto guardado correctamente", "success");
+
+
+            // 3. Limpieza y refresco
+            mostrarModal = false;
+            products = await ProductService.GetProductsAsync();
+        }
+        catch (Exception ex)
+        {
+            await Notificaciones.MostrarToast(JS, "Error", "Hubo un problema al guardar");
+            Console.WriteLine(ex.Message);
+        }
+
     }
 
     #region modal

@@ -13,6 +13,9 @@ namespace Store.Api.Mappings
 
             // De DTO a Entidad
             CreateMap<ProductCreateDto, Product>();
+
+            // Mapeo para actualización
+            CreateMap<ProductUpdateDto, Product>();
         }
     }
 }
