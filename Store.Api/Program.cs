@@ -1,13 +1,17 @@
 using MassTransit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NLog;
 using NLog.Web;
 using Scalar.AspNetCore;
 using Store.Api.Mappings;
 using Store.Api.Middlewares;
+using Store.Api.Services;
 using Store.Data.Data;
 using Store.Data.Repositories;
 using Store.Data.Service;
+using System.Text;
 
 
 // 1. ESTA LÍNEA DEBE SER LA PRIMERA (después de los using)
@@ -33,6 +37,10 @@ try
                   .AllowAnyHeader();
         });
     });
+
+
+    // Registro de servicios de aplicación
+    builder.Services.AddScoped<ITokenService, TokenService>();
 
     // --- CONFIGURACIÓN DE NLOG ---
     builder.Logging.ClearProviders();
@@ -76,6 +84,9 @@ try
     // Esto significa que se crea una instancia por cada petición HTTP y se destruye al finalizar.
     builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+
+   
+
     // --- CONFIGURACIÓN DE MENSAJERÍA ASÍNCRONA (RabbitMQ) ---
 
 
@@ -106,6 +117,22 @@ try
         });
     });
 
+    //authentication JWT
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+        };
+    });
+
 
     var app = builder.Build();
 
@@ -133,6 +160,7 @@ try
         app.UseHttpsRedirection();
     }
 
+    app.UseAuthentication();
     app.UseAuthorization();
 
     app.MapControllers();

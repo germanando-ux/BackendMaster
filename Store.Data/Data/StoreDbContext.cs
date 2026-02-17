@@ -10,6 +10,7 @@ namespace Store.Data.Data
 
         public DbSet<Product> Products => Set<Product>();
         public DbSet<Category> Categories => Set<Category>();
+        public DbSet<User> Users => Set<User>(); 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +35,11 @@ namespace Store.Data.Data
                       .HasForeignKey(p => p.CategoryId)
                       .OnDelete(DeleteBehavior.Restrict);
             });
+
+            ///configuración de users
+                modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
 
             // 4. CONFIGURACIÓN DE MASSTRANSIT (Crucial que esté aquí al final)
             modelBuilder.AddInboxStateEntity();
