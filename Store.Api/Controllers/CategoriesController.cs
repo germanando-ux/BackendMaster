@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using MassTransit; 
+using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Store.Data.Data;
@@ -9,6 +10,7 @@ using Store.Domain.Models;
 
 namespace Store.Api.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
@@ -30,6 +32,7 @@ namespace Store.Api.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {

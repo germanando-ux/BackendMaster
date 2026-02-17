@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Store.Api.Middlewares;
@@ -13,6 +14,8 @@ namespace Store.Api.Controllers
     /// Controlador para la gestión de productos.
     /// Utiliza el patrón Unit of Work para coordinar base de datos y caché.
     /// </summary>
+    
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ProductsController : ControllerBase

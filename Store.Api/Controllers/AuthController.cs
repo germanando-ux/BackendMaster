@@ -7,14 +7,17 @@ using Store.Domain.Models;
 
 namespace Store.Api.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly ITokenService _tokenService;
         private readonly StoreDbContext _context;
 
-        public AuthController(ITokenService tokenService)
+        public AuthController(ITokenService tokenService, StoreDbContext context)
         {
             _tokenService = tokenService;
+            _context = context;
         }
 
         /// <summary>
@@ -61,8 +64,8 @@ namespace Store.Api.Controllers
         public async Task<ActionResult<string>> Register(RegisterDTO registerDto)
         {
             //validadar si el correo ya existe
-            if (await _context.Users.AnyAsync(x => x.Email == registerDto.EmailAdress.ToLower()))
-            {
+            if (await _context.Users.AnyAsync(x => x.Email == registerDto.EmailAddress.ToLower()))
+            {                
                 return BadRequest("El correo electrónico ya está en uso.");
             }
 
@@ -70,7 +73,7 @@ namespace Store.Api.Controllers
 
             var user = new User
             {
-                Email = registerDto.EmailAdress.ToLower(),
+                Email = registerDto.EmailAddress.ToLower(),
                 PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(registerDto.Password)),
                 PasswordSalt = hmac.Key,
                 Role = "Seller" // Rol por defecto
