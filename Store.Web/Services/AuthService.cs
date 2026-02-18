@@ -1,6 +1,43 @@
-﻿namespace Store.Web.Services
+﻿using Microsoft.JSInterop;
+using Store.Web.Models;
+using System.Net.Http.Json;
+
+namespace Store.Web.Services
 {
-    public class AuthService
+    public class AuthService : IAuthService
     {
+        private readonly HttpClient _httpClient;
+        private readonly IJSRuntime _jsRuntime;
+
+        public AuthService(HttpClient httpClient, IJSRuntime jsRuntime)
+        {
+            _httpClient = httpClient;
+            _jsRuntime = jsRuntime;
+        }
+        public async Task<string?> Login(LoginDto loginDto)
+        {
+            //hacemos la llamada a la api 
+            var response = await _httpClient.PostAsJsonAsync("auth/login", loginDto);
+            if (response.IsSuccessStatusCode)
+            {
+                var token = await response.Content.ReadAsStringAsync();
+
+                // 3.Lo guardamos en el LocalStorage usando JavaScript
+                // El primer parámetro es el nombre de la "llave" y el segundo el valor
+                await _jsRuntime.InvokeVoidAsync("localStorage.setItem", "authToken", token);
+            }
+
+            return null;
+        }
+
+        public async Task Logout()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> Register(RegisterDto registerDto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
