@@ -32,12 +32,16 @@ namespace Store.Web.Services
 
         public async Task Logout()
         {
-            throw new NotImplementedException();
+            await _jsRuntime.InvokeVoidAsync("localStorage.removeItem", "authToken");
         }
 
         public async Task<bool> Register(RegisterDto registerDto)
         {
-            throw new NotImplementedException();
+            //enviamos los datos de registro a la api
+            var response = await _httpClient.PostAsJsonAsync("auth/register", registerDto);
+
+            //Evaluamos si la respuesta fue exitosa(código 200 - 299)
+            return response.IsSuccessStatusCode;
         }
     }
 }
