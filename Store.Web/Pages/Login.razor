@@ -6,11 +6,11 @@
             <h3 class="mb-0">Login</h3>
         </div>
         <div class="card-body">
-            <EditForm Model="@loginActual" OnValidSubmit="Logeo">
+            <EditForm Model="@loginActual" OnValidSubmit="HandleLogin">
                 <DataAnnotationsValidator />
                 <div class="mb-4">
-                    <div class="row mb-3">
-                        <label class="col-sm-2 form-label font-weight-bold">Correo electrónico</label>
+                    <div class="row justify-content-center mb-3">
+                        <label class="col-sm-2 col-form-label font-weight-bold">Correo electrónico</label>
                         <div class="col-sm-6">
                             <InputText @bind-Value="loginActual.Email" class="form-control" placeholder="Escribe tu email..." />
                             <ValidationMessage For="@(() => loginActual.Email)" class="text-danger" />         
@@ -19,16 +19,21 @@
                 </div>
 
                 <div class="mb-4">
-                    <div class="row mb-3">
-                        <label class="col-sm-2 form-label font-weight-bold">Contraseña</label>
+                    <div class="row justify-content-center mb-3">
+                        <label class="col-sm-2 col-form-label font-weight-bold">Contraseña</label>
                         <div class="col-sm-6">
                             <InputText @bind-Value="loginActual.Password" class="form-control" type="password" />
                             <ValidationMessage For="@(() => loginActual.Password)" class="text-danger" />
                         </div>
                     </div>
                 </div>
-
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-in-right"></i> Acceder
+                    </button>
+                </div>
             </EditForm>
+           
         </div>
     </div>
  </div>
@@ -36,4 +41,9 @@
 
 @code {
     private LoginDto loginActual = new();
+
+    private async Task HandleLogin()
+    {
+        await AuthService.Login(loginActual);
+    }
 }
