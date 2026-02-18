@@ -25,6 +25,7 @@ namespace Store.Web.Services
                 // 3.Lo guardamos en el LocalStorage usando JavaScript
                 // El primer parámetro es el nombre de la "llave" y el segundo el valor
                 await _jsRuntime.InvokeVoidAsync("localStorage.setItem", "authToken", token);
+                return token;
             }
 
             return null;

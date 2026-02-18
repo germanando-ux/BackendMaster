@@ -1,5 +1,8 @@
-﻿@page "/login"
+﻿@page "/"
+@layout LoginLayout
 @inject Store.Web.Services.IAuthService AuthService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JS
 <div class="container mt-4">
     <div class="card shadow">
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
@@ -29,7 +32,7 @@
                 </div>
                 <div class="text-center mt-4">
                     <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-box-arrow-in-right"></i> Acceder
+                        <i class="bi bi-box-arrow-in-right me-2"></i> Acceder
                     </button>
                 </div>
             </EditForm>
@@ -44,6 +47,18 @@
 
     private async Task HandleLogin()
     {
-        await AuthService.Login(loginActual);
+        var token = await AuthService.Login(loginActual);
+        // Si recibimos un token (no es nulo o vacío), el login fue un éxito
+        if (!string.IsNullOrEmpty(token))
+        {
+            NavigationManager.NavigateTo("/home");
+        }
+        else
+        {
+            
+            await Notificaciones.MostrarToast(JS, "Error de validación", "No se ha podido validar el usuario");
+            Console.WriteLine("Error: Credenciales incorrectas");
+        }
     }
+
 }
