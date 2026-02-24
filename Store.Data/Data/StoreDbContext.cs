@@ -11,6 +11,8 @@ namespace Store.Data.Data
         public DbSet<Product> Products => Set<Product>();
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<User> Users => Set<User>(); 
+        public DbSet<Venta> Ventas => Set<Venta>();
+        public DbSet<VentaDetalle> VentaDetalle => Set<VentaDetalle>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,8 +38,28 @@ namespace Store.Data.Data
                       .OnDelete(DeleteBehavior.Restrict);
             });
 
+            modelBuilder.Entity<Venta>(entity =>
+            {
+                // Seguimos tu criterio de precisión 18,3
+                entity.Property(v => v.Total)
+                      .HasPrecision(18, 3);
+
+                // Configuración de la relación uno a muchos con VentaDetalle
+                entity.HasMany(v => v.Detalles)
+                      .WithOne(d => d.Venta)
+                      .HasForeignKey(d => d.VentaId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.Property(v => v.EmailCliente)
+                       .HasMaxLength(150);
+            });
+
+            modelBuilder.Entity<VentaDetalle>()
+            .Property(vd => vd.PrecioUnitario)
+            .HasPrecision(18, 3);
+
             ///configuración de users
-                modelBuilder.Entity<User>()
+            modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
 
