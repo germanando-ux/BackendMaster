@@ -16,6 +16,7 @@ namespace Store.Domain.Models
         public decimal PrecioUnitario { get; set; }
 
         //relacion con la cabecera
-        public Venta Venta { get; set; }
+        public Venta Venta { get; set; } = null!;
+        public Product Product { get; set; } = null!;
     }
 }

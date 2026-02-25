@@ -16,6 +16,14 @@ namespace Store.Api.Mappings
 
             // Mapeo para actualización
             CreateMap<ProductUpdateDto, Product>();
+
+            // Dentro del constructor MappingProfile()
+            CreateMap<VentaCreateDto, Venta>();
+            CreateMap<VentaDetalleDto, VentaDetalle>();
+
+            // Para las lecturas (Dapper -> DTO)
+            CreateMap<Venta, VentaReadDto>();
+            CreateMap<VentaDetalle, VentaDetalleReadDto>().ForMember(dest => dest.NombreProducto, opt =>opt.MapFrom(src => src.Product.Name));
         }
     }
 }
