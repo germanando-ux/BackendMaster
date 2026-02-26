@@ -17,7 +17,7 @@
 
     public class VentaDetalleDto
     {
-        public int ProductoId { get; set; }
+        public int ProductId { get; set; }
         public int Cantidad { get; set; }
         // El precio lo recuperaremos en el Backend por seguridad 🛡️
     }

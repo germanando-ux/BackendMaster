@@ -41,6 +41,7 @@ try
 
     // Registro de servicios de aplicación
     builder.Services.AddScoped<ITokenService, TokenService>();
+    builder.Services.AddScoped<IVentaService, VentaService>();
 
     // --- CONFIGURACIÓN DE NLOG ---
     builder.Logging.ClearProviders();

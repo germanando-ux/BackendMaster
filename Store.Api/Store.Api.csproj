@@ -67,6 +67,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="Elastic.NLog.Targets" Version="9.0.0" />
     <PackageReference Include="MassTransit.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="9.0.0" />

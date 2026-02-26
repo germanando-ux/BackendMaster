@@ -318,7 +318,7 @@ namespace Store.Data.Migrations
                         .HasPrecision(18, 3)
                         .HasColumnType("numeric(18,3)");
 
-                    b.Property<int>("ProductoId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
                     b.Property<int>("VentaId")
