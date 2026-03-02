@@ -1,0 +1,31 @@
+﻿@page "/ventas"
+@using Store.Web.Models
+@using Store.Web.Services
+@inject IVentaService VentaService
+
+<div class=" container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Realizar Pedido 🛒</h4>
+        </div>
+        <div class="card-body">
+            <EditForm Model="@nuevaVenta" OnInvalidSubmit="ProcesarVenta">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Email del Cliente 📧</label>
+                    <InputText @bind-Value="nuevaVenta.EmailCliente" class="form-control" placeholder="nombre@ejemplo.com" />
+                    <ValidationMessage For="@(() => nuevaVenta.EmailCliente)" />
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private VentaCreateDto nuevaVenta = new();
+    private async Task ProcesarVenta()
+    {
+        Console.WriteLine("Enviando venta para: " + nuevaVenta.EmailCliente);
+    }
+}
