@@ -17,6 +17,49 @@
                     <InputText @bind-Value="nuevaVenta.EmailCliente" class="form-control" placeholder="nombre@ejemplo.com" />
                     <ValidationMessage For="@(() => nuevaVenta.EmailCliente)" />
                 </div>
+                <hr /> <h6 class="mb-3 fw-bold">Productos del pedido</h6>
+                @if (nuevaVenta.Detalles.Count == 0)
+                {
+                    <div class="alert alert-info">
+                        No hay productos añadidos todavía
+                    </div>
+                }
+                else
+                {
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Producto ID</th>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var detalle in nuevaVenta.Detalles)
+                            {
+                                <tr>
+                                    <td>
+                                        <InputNumber TValue="int" Value="detalle.ProductId" ValueChanged="@((int value) => OnProductoIdChanged(detalle, value))"
+                                                     ValueExpression="@(() => detalle.ProductId)"
+                                                     class="form-control" />
+                                    </td>
+                                    <td class="align-middle">                                        
+                                        <span class="text-muted">@GetNombreProducto(detalle.ProductId)</span>
+                                    </td>
+                                    <td>
+                                        <InputNumber @bind-Value="detalle.Cantidad" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-danger btn-sm" @onclick="() => QuitarProducto(detalle)">
+                                            Eliminar
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
             </EditForm>
         </div>
     </div>
@@ -24,8 +67,38 @@
 
 @code {
     private VentaCreateDto nuevaVenta = new();
+    private List<Product> catalogoProductos = new();
+
+    /// <summary>
+    /// Devuelve el nombre del producto buscando en el catálogo local por ID.
+    /// </summary>
+    /// <param name="id">ID del producto a buscar.</param>
+    /// <returns>El nombre del producto o "No encontrado".</returns>
+    private string GetNombreProducto(int id)
+    {
+        var producto = catalogoProductos.FirstOrDefault(p => p.Id == id);
+        return producto?.Description ?? "❌ No encontrado";
+    }
+
+    /// <summary>
+    /// Maneja el cambio manual del ID de producto en la tabla para refrescar la UI.
+    /// </summary>
+    private void OnProductoIdChanged(VentaDetalleDto detalle, int newId)
+    {
+        detalle.ProductId = newId;
+        // Aquí podrías disparar una lógica extra, como validar stock en tiempo real
+    }
+
     private async Task ProcesarVenta()
     {
         Console.WriteLine("Enviando venta para: " + nuevaVenta.EmailCliente);
+    }
+    /// <summary>
+    /// Elimina un detalle específico de la lista de la venta actual.
+    /// </summary>
+    /// <param name="detalle">El objeto de detalle que se desea remover.</param>
+    private void QuitarProducto(VentaDetalleDto detalle)
+    {
+        nuevaVenta.Detalles.Remove(detalle);
     }
 }

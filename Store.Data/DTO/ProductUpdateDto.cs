@@ -47,5 +47,7 @@ namespace Store.Data.DTO
         /// </summary>
         [Required(ErrorMessage = "La categoría es obligatoria.")]
         public int CategoryId { get; set; }
+
+        public int Stock { get; set; }
     }
 }
